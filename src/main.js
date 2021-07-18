@@ -4,10 +4,11 @@ import router from './router'
 import store from './store'
 import { VueCookieNext } from 'vue-cookie-next'
 import './index.css'
+import vueDebounce from 'vue-debounce'
 
 let app = createApp(App);
 app.use(VueCookieNext);
-
+app.use(vueDebounce)
 app.use(store);
 app.use(router);
 

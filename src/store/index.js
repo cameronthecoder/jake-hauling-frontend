@@ -131,7 +131,7 @@ const store = createStore({
         async getCompanies({ commit }, payload) {
             commit('SET_LOADING', true);
             try {
-                const { data } = await instance.get(`/api/companies/?limit=${payload.limit}&page=${payload.page}`, {
+                const { data } = await instance.get(`/api/companies/?limit=${payload.limit}&page=${payload.page}&searchTerm=${payload.search}`, {
                     headers: {
                         'Authorization': `Bearer ${store.getters.token || token}`
                     }
