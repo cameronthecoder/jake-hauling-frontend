@@ -131,10 +131,10 @@ const store = createStore({
         async getCompanies({ commit }, payload) {
             commit('SET_LOADING', true);
             try {
-                const { data } = await instance.get(`/api/companies/?limit=${payload.limit}&page=${payload.page}&searchTerm=${payload.search}`, {
-                    headers: {
-                        'Authorization': `Bearer ${store.getters.token || token}`
-                    }
+                let url = `/api/companies/?limit=${payload.limit}&page=${payload.page}`;
+                if (payload.search) { url = url + `&searchTerm=${payload.search}` }
+                const { data } = await instance.get(url, {
+                    'Authorization': `Bearer ${store.getters.token || token}`
                 });
                 commit('SET_COMPANIES', data);
             } catch (error) {

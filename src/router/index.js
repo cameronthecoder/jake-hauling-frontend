@@ -16,21 +16,30 @@ const routes = [{
         path: "/admin",
         name: "Admin",
         redirect: "/admin/home/",
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "Admin" },
         component: Shell,
         children: [{
                 path: 'home',
+                meta: {
+                    title: "Dashboard"
+                },
                 name: 'admin_home',
                 component: Dashboard
             },
             {
                 path: 'companies',
                 name: 'admin_companies',
+                meta: {
+                    title: "Companies"
+                },
                 component: Companies
             },
             {
-                path: 'create_order',
+                path: 'orders/create',
                 name: 'admin_create_order',
+                meta: {
+                    title: "Create Order"
+                },
                 component: CreateOrder
             },
         ]
@@ -39,6 +48,9 @@ const routes = [{
         path: "/login",
         name: "Login",
         component: Login,
+        meta: {
+            title: "Login"
+        }
     },
 
 
@@ -50,9 +62,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log(isAuthenticated());
     if (to.meta.requiresAuth && !isAuthenticated()) next({ name: 'Login' })
-    else next()
+    else {
+        document.title = `${to.meta.title} - JAKE HAULING LLC`
+        next()
+    }
 })
 
 export default router;
