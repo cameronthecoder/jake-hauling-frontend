@@ -5,8 +5,8 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         fontFamily: {
-            'display': ['Nunito'],
-            'body': ['Nunito']
+            //'display': ['Nunito'],
+            //'body': ['Nunito']
         },
         extend: {
             colors: {
