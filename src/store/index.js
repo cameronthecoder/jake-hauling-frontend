@@ -18,13 +18,17 @@ const store = createStore({
             user: null,
             loading: false,
             readyOrders: {},
-            companies: []
+            companies: [],
+            errors: [],
+            userLoading: false
         }
     },
 
     mutations: {
         SET_TOKEN: (state, token) => state.token = token,
         SET_USER: (state, user) => state.user = user,
+        SET_USER_LOADING: (state, loading) => state.userLoading = loading,
+        ADD_ERROR: (state, error) => state.errors.push(error),
         SET_READY_ORDERS: (state, readyOrders) => state.readyOrders = readyOrders,
         SET_LOADING: (state, loading) => state.loading = loading,
         SET_COMPANIES: (state, companies) => state.companies = companies
@@ -33,6 +37,12 @@ const store = createStore({
     getters: {
         user(state) {
             return state.user;
+        },
+        errors(state) {
+            return state.errors;
+        },
+        userLoading(state) {
+            return state.userLoading
         },
         readyOrders(state) {
             return state.readyOrders;
@@ -60,11 +70,12 @@ const store = createStore({
                     }
                 });
                 // set cookie to secure=true and httpOnly=true !!!
-                VueCookieNext.setCookie('access_token', data.access_token);
+                VueCookieNext.setCookie('access_token', data.access_token, { expire: '60m' });
                 commit('SET_TOKEN', data.access_token);
                 await dispatch('loadUser', data.access_token);
                 router.push({ 'name': 'Admin' });
             } catch (error) {
+                commit('ADD_ERROR', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })
                 console.log('error while trying to login');
                 console.log(error);
 
@@ -85,7 +96,7 @@ const store = createStore({
 
         async loadUser({ getters, commit, dispatch }, token) {
             if (getters.isAuthenticated) {
-                console.log(store.getters.token);
+                commit('SET_USER_LOADING', true);
                 try {
                     const { data } = await instance.get('/api/auth/me/', {
                         headers: {
@@ -97,7 +108,11 @@ const store = createStore({
                     console.log(error);
                     if (error.request.status == 401) {
                         dispatch('logout');
+                    } else {
+                        commit('ADD_ERROR', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })
                     }
+                } finally {
+                    commit('SET_USER_LOADING', false);
                 }
             }
         },

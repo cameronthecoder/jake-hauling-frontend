@@ -5,10 +5,10 @@
     <div class="flex flex-row md:flex-col items-center gap-4 md:gap-12">
       <InboxIcon class="h-8 w-8 text-gray-500 hover:text-gray-300 cursor-pointer" :class="{'text-primary-600': this.$route.name == 'admin_orders' }" />
       <router-link to="/admin">
-      <HomeIcon class="h-8 w-8 text-gray-500 hover:text-gray-300 cursor-pointer" :class="{'text-primary-600': this.$route.name == 'admin_home' }" />
+        <HomeIcon class="h-8 w-8 text-gray-500 hover:text-gray-300 cursor-pointer" :class="{'text-primary-600': this.$route.name == 'admin_home' }" />
       </router-link>
       <router-link to="/admin/companies/">
-<OfficeBuildingIcon class="h-8 w-8 text-gray-500 hover:text-gray-300 cursor-pointer" :class="{'text-primary-600': this.$route.name == 'admin_companies' }" />
+        <OfficeBuildingIcon class="h-8 w-8 text-gray-500 hover:text-gray-300 cursor-pointer" :class="{'text-primary-600': this.$route.name == 'admin_companies' }" />
       </router-link>
     </div>
 

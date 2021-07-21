@@ -10,6 +10,8 @@
         Jake Hauling LLC
       </h2>
     </div>
+    <p class="text-center font-body font-bold text-xl" v-if="isAuthenticated">It looks like you are already logged in.</p>
+    <alerts />
     <form class="mt-8 space-y-6" @submit.prevent="login">
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">
@@ -50,7 +52,12 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { useStore } from 'vuex'
+import { computed } from '@vue/runtime-core';
+import Alerts from '../components/Alerts.vue';
 export default {
+  components: {
+    Alerts
+  },
   setup() {
     const username = ref("");
     const password = ref("");
@@ -60,6 +67,7 @@ export default {
     return {
       username,
       password,
+      isAuthenticated: computed(() => store.getters.isAuthenticated),
       login: () => store.dispatch('login', {'username': username.value, 'password': password.value}),
     };
   },
@@ -67,7 +75,4 @@ export default {
 </script>
 
 <style>
-input {
-  margin-top: 10px;
-}
 </style>
