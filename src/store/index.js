@@ -77,6 +77,8 @@ const store = createStore({
             } catch (error) {
                 if (error.request.status == 401) {
                     commit('ADD_ERROR', { 'message': `Invalid username or password.` })
+                } else {
+                    commit('ADD_ERROR', { 'message': `An unexpected error has occurred. Please try again later.` })
                 }
                 console.log('error while trying to login');
                 console.log(error);
