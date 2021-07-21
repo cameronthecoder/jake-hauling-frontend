@@ -4,10 +4,10 @@
     <div>
       <img src="/truck.svg" class="h-16 w-16 m-auto" alt="">
       <h2 class="mt-6 text-center text-3xl font-bold text-gray-900 font-display">
-        Welcome back!
+        Login to Jake Hauling LLC
       </h2>
-      <h2 class="text-center text-sm font-bold text-gray-300 font-display">
-        Jake Hauling LLC
+      <h2 class="text-center mt-3 text-sm font-bold text-gray-300 font-display">
+        Please login with the email and password provided. If you did not receive one, contact the IT department.
       </h2>
     </div>
     <p class="text-center font-body font-bold text-xl" v-if="isAuthenticated">It looks like you are already logged in.</p>

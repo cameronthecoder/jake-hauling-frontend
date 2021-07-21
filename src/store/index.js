@@ -75,7 +75,9 @@ const store = createStore({
                 await dispatch('loadUser', data.access_token);
                 router.push({ 'name': 'Admin' });
             } catch (error) {
-                commit('ADD_ERROR', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })
+                if (error.request.status == 401) {
+                    commit('ADD_ERROR', { 'message': `Invalid username or password.` })
+                }
                 console.log('error while trying to login');
                 console.log(error);
 
