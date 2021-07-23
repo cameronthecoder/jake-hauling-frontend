@@ -53,10 +53,13 @@
             <thead class="bg-gray-50">
               <tr>
                 <th scope="col" class="px-6 font-body py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  ID
+                </th>
+                <th scope="col" class="px-6 font-body py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Name
                 </th>
                 <th scope="col" class="px-6 font-body py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Phone Number
+                  Phone Number / Email
                 </th>
                 <th scope="col" class="px-6 font-body py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
@@ -68,6 +71,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr v-for="company in results.companies" :key="company.id">
+                <td class="px-6 py-4">{{company.id}}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="ml-4">
@@ -82,7 +86,7 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm text-gray-900">{{ company.contact_email }}</div>
-                  <div class="text-sm text-gray-500">{{ company.phone_number }}</div>
+                  <div class="text-sm text-gray-500" v-if="company.phone_number != '1'">{{ company.phone_number }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -120,7 +124,7 @@ export default {
 	const limit = ref(20);
 	const search = ref('');
 
-    const getCompanies = () => store.dispatch("getCompanies", {limit: limit.value, page: page.value, search: search.value});
+  const getCompanies = () => store.dispatch("getCompanies", {limit: limit.value, page: page.value, search: search.value});
 
 	watchEffect(() => {
 		getCompanies();

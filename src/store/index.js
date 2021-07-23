@@ -72,7 +72,7 @@ const store = createStore({
                 // set cookie to secure=true and httpOnly=true !!!
                 VueCookieNext.setCookie('access_token', data.access_token, { expire: '60m' });
                 commit('SET_TOKEN', data.access_token);
-                await dispatch('loadUser', data.access_token);
+                await dispatch('loadUser');
                 router.push({ 'name': 'Admin' });
             } catch (error) {
                 if (error.request.status == 401) {
@@ -98,13 +98,13 @@ const store = createStore({
             }
         },
 
-        async loadUser({ getters, commit, dispatch }, token) {
+        async loadUser({ getters, commit, dispatch }) {
             if (getters.isAuthenticated) {
                 commit('SET_USER_LOADING', true);
                 try {
                     const { data } = await instance.get('/api/auth/me/', {
                         headers: {
-                            'Authorization': `Bearer ${store.getters.token || token}`
+                            'Authorization': `Bearer ${store.getters.token}`
                         }
                     });
                     commit('SET_USER', data);

@@ -5,14 +5,14 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         fontFamily: {
-            'display': ['Nunito'],
-            'body': ['Nunito']
+            'display': ['Inter'],
+            'body': ['Inter']
         },
         extend: {
             colors: {
                 primary: colors.cyan,
                 secondary: colors.blue
-            },
+            }
         },
         variants: {
             extend: {},

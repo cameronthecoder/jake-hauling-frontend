@@ -5,6 +5,7 @@
 <script>
 import { useStore } from 'vuex'
 import {useRouter} from 'vue-router'
+import { onMounted } from '@vue/runtime-core';
 export default {
   setup() {
     const store = useStore();
@@ -17,7 +18,7 @@ export default {
   created() {
     console.log(this.$route.name);
     if(this.$route.name !== 'Login') {
-      console.log(this.$route.name == 'Login');
+     console.log(this.$route.name == 'Login');
       console.log('we are loading the user from the main app');
       this.loadUser();
     }
