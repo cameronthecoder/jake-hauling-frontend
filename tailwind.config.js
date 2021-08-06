@@ -5,12 +5,18 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         fontFamily: {
-            'display': ['Inter'],
-            'body': ['Inter']
+            'display': ['Open Sans'],
+            'body': ['Open Sans']
         },
+        stroke: theme => ({
+            'red': theme('colors.red.500'),
+            'green': theme('colors.green.500'),
+            'blue': theme('colors.blue.500'),
+        }),
         extend: {
             colors: {
                 primary: colors.cyan,
+                orange: colors.orange,
                 secondary: colors.blue
             }
         },

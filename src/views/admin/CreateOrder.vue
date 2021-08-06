@@ -9,7 +9,7 @@
                   for="company"
                   class="form-label font-body block mb-1 font-semibold text-gray-700"
                 >Company <span class="text-red-600">*</span></label>
-                <select required name="company" id="company" class="rounded-md font-body w-full shadow py-4 px-4 border-2 border-gray-300 mb-6 focus:border-primary-600">
+                <select required name="company" id="company" class="rounded-md font-body w-full shadow py-4 px-4 border-2 focus:outline-none border-gray-300 mb-6 focus:border-primary-600">
                   <option value="Select a company" selected disabled>Select a company</option>
                   <option v-for="company in results.companies" :key="company.id" :value="company.id">{{company.name}}</option>
                 </select>

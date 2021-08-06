@@ -3,6 +3,7 @@ import Shell from "../views/admin/Shell.vue";
 import Dashboard from "../views/admin/Dashboard.vue";
 import Companies from "../views/admin/Companies.vue";
 import CreateOrder from "../views/admin/CreateOrder.vue";
+import UIExplorer from "../views/admin/UIExplorer.vue";
 import Login from "../views/Login.vue";
 import store from '../store'
 
@@ -33,6 +34,14 @@ const routes = [{
                     title: "Companies"
                 },
                 component: Companies
+            },
+            {
+                path: 'ui',
+                name: 'admin_ui',
+                meta: {
+                    title: "Admin UI Components"
+                },
+                component: UIExplorer
             },
             {
                 path: 'orders/create',

@@ -1,51 +1,56 @@
 <template>
-<div class="min-h-screen flex items-center justify-center bg-primary-600 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 p-6 shadow-md bg-white rounded-md">
-    <div>
-      <img src="/truck.svg" class="h-16 w-16 m-auto" alt="">
-      <h2 class="mt-6 text-center text-3xl font-bold text-gray-900 font-display">
-        Login to Jake Hauling LLC
-      </h2>
-      <h2 class="text-center mt-3 text-sm font-bold text-gray-600 font-display">
-        Please login with the email and password provided. If you did not receive one, contact the IT department.
-      </h2>
+<div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="shadow-md relative rel max-w-4xl w-full h-96 rounded">
+         <div
+         v-show="loading.login || loading.user"
+  class="
+  bg-white
+  w-full
+  flex
+  absolute
+  bg-opacity-75
+  bottom-0
+  right-0
+  left-0
+  top-0
+  h-96
+  items-center
+  justify-center
+"
+>
+<img src="tail-spin.svg" class="h-32" alt="" />
     </div>
-    <p class="text-center font-body font-bold text-xl" v-if="isAuthenticated">It looks like you are already logged in.</p>
-    <alerts />
-    <form class="mt-8 space-y-6" @submit.prevent="login">
-      <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" v-model="username"  type="email" autocomplete="email" required class="appearance-none rounded-none font-body relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm" placeholder="Email address">
-        </div>
-        <div>
-          <label for="password" class="sr-only">Password</label>
-          <input id="password" v-model="password" type="password" autocomplete="current-password" required class="appearance-none font-body rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm" placeholder="Password">
-        </div>
-      </div>
+    <div class="flex h-full flex-col md:flex-row">
+      <div class="md:w-1/2 w-full h-100 p-6 bg-primary-600">
+        <h1 class="text-xl font-bold font-body text-white">Login to Jake Hauling LLC</h1>
+        <p class="text-base font-body text-white mt-4">With the Jake Hauling LLC OMS, you can manage orders, invoices, routes, and more.</p>
 
-      <div class="text-center">
-        <div class="text-sm">
-          <a href="#" class="font-medium font-body text-primary-600 hover:text-primary-500">
-            Forgot your password?
-          </a>
+        <div v-if="user" class="rounded shadow mt-4 gap-4 bg-white p-6 flex items-center">
+          <div>
+           <img v-if="user" :src="`https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&bold=true`" class="w-12 h-12 md:block object-cover rounded-full mx-auto" alt="" />
+           </div>
+           <section>
+             <h1 class="text-lg font-body font-bold">{{user.first_name}} {{user.last_name}}</h1>
+             <h2 class="text-base text-gray-400 font-body">is already logged in. Not you?</h2>
+           </section>
         </div>
       </div>
-
-      <div>
-        <button type="submit" class="group font-body relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <!-- Heroicon name: solid/lock-closed -->
-            <svg class="h-5 w-5 text-primary-500 group-hover:text-primary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-            </svg>
-          </span>
-          Sign in
-        </button>
+      <div class="flex-1 bg-white p-6">
+        <form @submit.prevent="login" class="block w-full">
+          <alerts />
+          <text-input label="Username" id="username" class="mb-4" placeholder="Username" v-model="username" /> 
+          <text-input label="Password" id="password" placeholder="Password" type="password" v-model="password" />
+          <div class="flex mt-4 gap-2">
+              <ui-button type="submit" color="primary" class="w-1/2" size="big">Login</ui-button> 
+              <ui-button type="button" color="secondary" class="w-1/2" size="small">Forgot Password</ui-button> 
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
+</div>
+<div class="relative text-center">
+  <p class="absolute bottom-0 right-0 left-0 font-body text-sm mb-4">Copyright 2021 Cameron Dahl. All rights reserved.</p>
 </div>
 </template>
 
@@ -54,9 +59,13 @@ import { ref } from "@vue/reactivity";
 import { useStore } from 'vuex'
 import { computed } from '@vue/runtime-core';
 import Alerts from '../components/Alerts.vue';
+import TextInput from '../components/TextInput.vue';
+import UiButton from '../components/ui/uiButton.vue';
 export default {
   components: {
-    Alerts
+    Alerts,
+    TextInput,
+    UiButton
   },
   setup() {
     const username = ref("");
@@ -68,6 +77,8 @@ export default {
       username,
       password,
       isAuthenticated: computed(() => store.getters.isAuthenticated),
+      loading: computed(() => store.getters.loading),
+      user: computed(() => store.getters.user),
       login: () => store.dispatch('login', {'username': username.value, 'password': password.value}),
     };
   },

@@ -13,31 +13,7 @@
       "
     >
       <alerts />
-      <Suspense>
-        <template #default>
-          <router-view />
-        </template>
-        <template #fallback>
-          <div
-            class="
-              bg-white
-              fixed
-              w-100
-              h-100
-              top-0
-              left-0
-              right-0
-              bottom-0
-              z-10
-              flex
-              items-center
-              justify-center
-            "
-          >
-            <img src="../../assets/tail-spin.svg" class="h-32" alt="" />
-          </div>
-        </template>
-      </Suspense>
+      <router-view />
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@
   <label
     :for="id"
     v-if="label"
-    class="form-label font-body block mb-1 font-semibold text-gray-700"
+    class="form-label font-body block mb-4 font-semibold text-gray-700"
     >{{ label }} <span v-if="required" class="text-red-600">*</span></label
   >
   <input
@@ -30,7 +30,6 @@
       text-left
       border-2
       border-gray-300
-      appearance-none
       focus:outline-none
     "
     :class="{'border-red-400': errors.length}"

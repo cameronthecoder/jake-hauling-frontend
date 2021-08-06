@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="antialiased" />
 </template>
 
 <script>
@@ -16,10 +16,7 @@ export default {
     }
   },
   created() {
-    console.log(this.$route.name);
     if(this.$route.name !== 'Login') {
-     console.log(this.$route.name == 'Login');
-      console.log('we are loading the user from the main app');
       this.loadUser();
     }
   }
