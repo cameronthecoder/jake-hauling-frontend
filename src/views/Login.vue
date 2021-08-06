@@ -18,7 +18,7 @@
   justify-center
 "
 >
-<img src="tail-spin.svg" class="h-32" alt="" />
+<img src="/tail-spin.svg" class="h-32" alt="" />
     </div>
     <div class="flex h-full flex-col md:flex-row">
       <div class="md:w-1/2 w-full h-100 p-6 bg-primary-600">

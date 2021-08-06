@@ -65,7 +65,7 @@
   </div>
 
   <img
-    src="tail-spin.svg"
+    src="/tail-spin.svg"
     class="h-20 m-auto"
     v-if="loading"
     alt=""
