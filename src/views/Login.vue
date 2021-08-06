@@ -1,19 +1,20 @@
 <template>
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="shadow-md relative rel max-w-4xl w-full h-96 rounded">
+  <div class="shadow-lg relative max-w-4xl rounded overflow-auto">
          <div
          v-show="loading.login || loading.user"
   class="
-  bg-white
-  w-full
-  flex
+  bg-white  
   absolute
-  bg-opacity-75
-  bottom-0
+  h-100
+  w-100
+  flex
+  top-0
   right-0
   left-0
-  top-0
-  h-96
+  bottom-0
+  z-20
+  bg-opacity-75
   items-center
   justify-center
 "
@@ -25,7 +26,7 @@
         <h1 class="text-xl font-bold font-body text-white">Login to Jake Hauling LLC</h1>
         <p class="text-base font-body text-white mt-4">With the Jake Hauling LLC OMS, you can manage orders, invoices, routes, and more.</p>
 
-        <div v-if="user" class="rounded shadow mt-4 gap-4 bg-white p-6 flex items-center">
+        <div v-if="user" class="rounded shadow mt-4 md:mt-12 gap-4 bg-white p-6 flex items-center">
           <div>
            <img v-if="user" :src="`https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&bold=true`" class="w-12 h-12 md:block object-cover rounded-full mx-auto" alt="" />
            </div>
@@ -38,8 +39,8 @@
       <div class="flex-1 bg-white p-6">
         <form @submit.prevent="login" class="block w-full">
           <alerts />
-          <text-input label="Username" id="username" class="mb-4" placeholder="Username" v-model="username" /> 
-          <text-input label="Password" id="password" placeholder="Password" type="password" v-model="password" />
+          <text-input required="true" label="Username" id="username" class="mb-4" placeholder="Username" v-model="username" /> 
+          <text-input required="true" label="Password" id="password" placeholder="Password" type="password" v-model="password" />
           <div class="flex mt-4 gap-2">
               <ui-button type="submit" color="primary" class="w-1/2" size="big">Login</ui-button> 
               <ui-button type="button" color="secondary" class="w-1/2" size="small">Forgot Password</ui-button> 
