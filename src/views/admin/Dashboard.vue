@@ -11,7 +11,7 @@
         July 22nd, 2021
       </h2>
       <img
-        src="../../assets/tail-spin.svg"
+        src="tail-spin.svg"
         class="h-20 m-auto"
         v-if="loading"
         alt=""
