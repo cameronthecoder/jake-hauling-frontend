@@ -1,26 +1,7 @@
 <template>
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
   <div class="shadow-lg relative max-w-4xl rounded overflow-auto">
-         <div
-         v-show="loading.login || loading.user"
-  class="
-  bg-white  
-  absolute
-  h-100
-  w-100
-  flex
-  top-0
-  right-0
-  left-0
-  bottom-0
-  z-20
-  bg-opacity-75
-  items-center
-  justify-center
-"
->
-<img src="/tail-spin.svg" class="h-32" alt="" />
-    </div>
+    <login-overlay :show="loading.login || loading.user"></login-overlay>
     <div class="flex h-full flex-col md:flex-row">
       <div class="md:w-1/2 w-full h-100 p-6 bg-primary-600">
         <h1 class="text-xl font-bold font-body text-white">Login to Jake Hauling LLC</h1>
@@ -39,10 +20,12 @@
       <div class="flex-1 bg-white p-6">
         <form @submit.prevent="login" class="block w-full">
           <alerts />
-          <text-input required="true" label="Username" id="username" class="mb-4" placeholder="Username" v-model="username" /> 
-          <text-input required="true" label="Password" id="password" placeholder="Password" type="password" v-model="password" />
+          <div class="flex flex-col gap-4">
+            <text-input :disabled="loading.login" :required="true" label="Username" id="username" placeholder="Username" v-model="username" /> 
+            <text-input :disabled="loading.login" :required="true" label="Password" id="password" placeholder="Password" type="password" v-model="password" />
+          </div>
           <div class="flex mt-4 gap-2">
-              <ui-button type="submit" color="primary" class="w-1/2" size="big">Login</ui-button> 
+              <ui-button type="submit" :disabled="loading.login" color="primary" class="w-1/2" size="big">Login</ui-button> 
               <ui-button type="button" color="secondary" class="w-1/2" size="small">Forgot Password</ui-button> 
           </div>
         </form>
@@ -61,12 +44,14 @@ import { useStore } from 'vuex'
 import { computed } from '@vue/runtime-core';
 import Alerts from '../components/Alerts.vue';
 import TextInput from '../components/TextInput.vue';
+import LoginOverlay from '../components/LoginOverlay.vue';
 import UiButton from '../components/ui/uiButton.vue';
 export default {
   components: {
     Alerts,
     TextInput,
-    UiButton
+    UiButton,
+    LoginOverlay
   },
   setup() {
     const username = ref("");
@@ -78,7 +63,7 @@ export default {
       username,
       password,
       isAuthenticated: computed(() => store.getters.isAuthenticated),
-      loading: computed(() => store.getters.loading),
+      loading: computed(() => store.state.auth.loading),
       user: computed(() => store.getters.user),
       login: () => store.dispatch('login', {'username': username.value, 'password': password.value}),
     };

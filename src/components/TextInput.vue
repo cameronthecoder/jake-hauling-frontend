@@ -10,12 +10,14 @@
     :type="type"
     :id="id"
     @input="changeValue"
+    :disabled="disabled"
     :required="required"
     ref="input"
     v-bind="$attrs"
     class="
       px-6
       py-6
+      disabled:bg-black
       font-body
       h-10
       shadow
@@ -23,8 +25,9 @@
       block
       w-full
       focus:ring-primary-600
-      focus:ring-2
+      focus:ring-4
       text-gray-800
+      focus:ring-opacity-50
       font-sans
       rounded-md
       text-left
@@ -52,7 +55,11 @@ export default {
         },
         required: {
           type: Boolean,
-          defualt: false,
+          default: false,
+        },
+        disabled: {
+          type: Boolean,
+          default: false,
         },
         type: {
             type: String,

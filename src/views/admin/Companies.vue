@@ -288,7 +288,7 @@ export default {
     
 
     const getCompanies = () =>
-      store.dispatch("getCompanies", {
+      store.dispatch("companies/getCompanies", {
         limit: limit.value,
         page: page.value,
         search: search.value,
@@ -307,8 +307,8 @@ export default {
     };
 
     return {
-      loading: computed(() => store.getters.loading),
-      results: computed(() => store.getters.companies),
+      loading: computed(() => store.companies.getters.loading),
+      results: computed(() => store.companies.companies),
       getCompanies,
       page,
       limit,

@@ -4,10 +4,10 @@
 
     <div class="flex flex-row md:flex-col items-center gap-4 md:gap-12">
       <div class="text-black">
-        <InboxIcon class="h-8 w-8 cursor-pointer" :class="{'bg-primary-700': this.$route.name == 'admin_orders' }" />
+        <InboxIcon class="h-8 w-8 cursor-pointer" :class="{'bg-primary-600': this.$route.name == 'admin_orders' }" />
       </div>
-      <router-link to="/admin/home/" active-class="bg-primary-400 bg-opacity-30 text-white p-3 rounded-md">
-        <HomeIcon class="h-8 w-8 text-white cursor-pointer" :class="{'text-primary-700': this.$route.name == 'admin_home' }" />
+      <router-link to="/admin/home/" active-class="bg-primary-600 p-3 rounded-md">
+        <HomeIcon class="h-8 w-8 cursor-pointer" :class="{'text-white': this.$route.name == 'admin_home' }" />
       </router-link>
       <router-link to="/admin/companies/">
         <OfficeBuildingIcon class="h-8 w-8 text-black hover:text-gray-300 cursor-pointer" :class="{'text-primary-500': this.$route.name == 'admin_companies' }" />

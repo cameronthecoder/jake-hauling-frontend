@@ -57,12 +57,12 @@ export default {
 
     const store = useStore();
 
-    const getCompanies = () => store.dispatch("getCompanies", {limit: -1, page: 1, search: ""});
+    const getCompanies = () => store.dispatch("companies/getCompanies", {limit: -1, page: 1, search: ""});
 
       return {
           order,
           getCompanies,
-          results: computed(() => store.getters.companies),
+          results: computed(() => store.state.companies.companies),
       }
   },
   created() {

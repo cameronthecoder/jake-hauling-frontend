@@ -35,7 +35,9 @@ const actions = {
             commit('SET_TOKEN', data.access_token);
             await dispatch('loadUser');
             router.push({ 'name': 'Admin' });
+            commit('CLEAR_ERRORS');
         } else {
+            commit('CLEAR_ERRORS');
             if (typeof error.request != null) {
                 if (error.request.status == 401) {
                     commit('ADD_ERROR', { 'message': `Invalid username or password.` })
@@ -65,6 +67,7 @@ const actions = {
                 commit('SET_USER', data);
             } else {
                 if (error.request.status == 401) {
+                    commit('ADD_ERROR', { 'message': 'Your session as expired. Please login again.' })
                     dispatch('logout');
                 } else {
                     commit('ADD_ERROR', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })

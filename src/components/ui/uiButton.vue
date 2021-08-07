@@ -29,7 +29,7 @@ export default {
         const getColorClasses = computed(() => {
             switch (props.color) {
                 case "primary":
-                    return "text-white bg-primary-600 hover:bg-primary-700 disabled:text-gray-800 focus:ring-4 focus:ring-primary-400"
+                    return "text-white bg-primary-600 hover:bg-primary-700 disabled:bg-primary-800 focus:ring-4 focus:ring-primary-400"
                 case "secondary":
                     return "text-primary-600 bg-gray-200 hover:bg-opacity-75 disabled:text-gray-800 focus:ring-4 focus:ring-gray-300"
                 case "error" :
