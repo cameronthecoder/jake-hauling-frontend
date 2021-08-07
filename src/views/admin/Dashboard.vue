@@ -21,7 +21,7 @@
          <article class="rounded shadow p-4 bg-white w-full">
           <div class="flex items-center justify-between">
             <div class="flex gap-4 items-center">
-              <div class="bg-primary-500 shadow text-white rounded p-2">
+              <div class="bg-primary-600 shadow text-white rounded p-2">
                 <TruckIcon class="h-8 w-8" />
               </div>
               <section>
@@ -41,7 +41,7 @@
         <article class="rounded shadow p-4 bg-white w-full">
           <div class="flex items-center justify-between">
             <div class="flex gap-4 items-center">
-              <div class="bg-primary-500 shadow text-white rounded p-2">
+              <div class="bg-primary-600 shadow text-white rounded p-2">
                 <TruckIcon class="h-8 w-8" />
               </div>
               <section>
@@ -61,7 +61,7 @@
         <article class="rounded shadow p-4 bg-white w-full">
           <div class="flex items-center justify-between">
             <div class="flex gap-4 items-center">
-              <div class="bg-primary-500 shadow text-white rounded p-2">
+              <div class="bg-primary-600 shadow text-white rounded p-2">
                 <TruckIcon class="h-8 w-8" />
               </div>
               <section>
@@ -79,13 +79,13 @@
           </div>
         </article>
       </div>
-      <div class="p-3 rounded shadow-lg">
-        <p>{{zoom}}</p>
+      <div class="p-6 rounded shadow-lg">
                       <l-map
           :center="[47.41322, -1.219482]"
           v-model="zoom"
           v-model:zoom="zoom"
           style="height:50vh"
+          class="rounded-md"
         >
             <l-tile-layer
               url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2FtZXJvbmNvZGVzIiwiYSI6ImNrbGR2YXBpbjAxNXQycHBrZmJ0bXR6YjEifQ.OmuqPuHveyAqDwbPgfTM4Q"
@@ -176,7 +176,7 @@ export default {
     const getReadyOrders = () => store.dispatch("getReadyOrders");
 
     return {
-      loading: computed(() => store.getters.loading),
+      loading: computed(() => store.state.),
       user: computed(() => store.getters.user),
       currentPage,
       myChart,
