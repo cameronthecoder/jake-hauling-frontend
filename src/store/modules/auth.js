@@ -35,14 +35,14 @@ const actions = {
             commit('SET_TOKEN', data.access_token);
             await dispatch('loadUser');
             router.push({ 'name': 'Admin' });
-            commit('CLEAR_ERRORS');
+            commit('alerts/CLEAR_ALERTS',null, { root: true });
         } else {
-            commit('CLEAR_ERRORS');
+            commit('alerts/CLEAR_ALERTS',null, { root: true });
             if (typeof error.request != null) {
                 if (error.request.status == 401) {
-                    commit('ADD_ERROR', { 'message': `Invalid username or password.` })
+                    commit('alerts/ADD_ALERT', { 'message': `Invalid username or password.` }, { root: true });
                 } else {
-                    commit('ADD_ERROR', { 'message': `An unexpected error has occurred. Please try again later.` })
+                    commit('alerts/ADD_ALERT', { 'message': `An unexpected error has occurred. Please try again later.` }, { root: true });
                 }
             }
         }
@@ -54,7 +54,7 @@ const actions = {
         if (data) {
             window.location.replace(data.authorization_url);
         } else {
-            commit('ADD_ERROR', { 'message': `An error has occurred.` })
+            commit('ADD_ALERT', { 'message': `An error has occurred.` })
         }
     },
 
@@ -67,10 +67,10 @@ const actions = {
                 commit('SET_USER', data);
             } else {
                 if (error.request.status == 401) {
-                    commit('ADD_ERROR', { 'message': 'Your session as expired. Please login again.' })
+                    commit('ADD_ALERT', { 'message': 'Your session as expired. Please login again.' })
                     dispatch('logout');
                 } else {
-                    commit('ADD_ERROR', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })
+                    commit('ADD_ALERT', { 'message': `${error.request.status} An unexpected error has occurred. Please try again later.` })
                 }
                 console.log(error);
             }
@@ -83,13 +83,15 @@ const actions = {
             commit('SET_USER', null);
             commit('SET_TOKEN', null);
             VueCookieNext.removeCookie('access_token', null);
-            router.push({ 'name': 'Login' })
+            router.push({ 'name': 'Login' });
+            commit('alerts/ADD_ALERT', {'message': 'Successfully logged out'})
         }
     },
 };
 
 
 export default {
+    namespaced: true,
     state,
     getters,
     actions,

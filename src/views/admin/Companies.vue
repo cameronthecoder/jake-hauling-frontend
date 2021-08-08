@@ -67,7 +67,7 @@
   <img
     src="/tail-spin.svg"
     class="h-20 m-auto"
-    v-if="loading"
+    v-if="loading.companies"
     alt=""
   />
   <div class="flex flex-col mt-16">
@@ -307,8 +307,8 @@ export default {
     };
 
     return {
-      loading: computed(() => store.companies.getters.loading),
-      results: computed(() => store.companies.companies),
+      loading: computed(() => store.getters['companies/loading']),
+      results: computed(() => store.getters['companies/companies']),
       getCompanies,
       page,
       limit,

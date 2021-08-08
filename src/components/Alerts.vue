@@ -1,6 +1,6 @@
 <template>
-    <div class="p-4 rounded-md bg-red-600 text-white font-body" v-for="error in errors" :key="error.message">
-      <ExclamationIcon class="w-6 h-6 mr-2 inline-block" /> {{error.message}}
+    <div class="p-4 rounded-md bg-red-600 text-white font-body" v-for="alert in alerts" :key="alert.message">
+      <ExclamationIcon class="w-6 h-6 mr-2 inline-block" /> {{alert.message}}
     </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     setup() {
         const store = useStore();
         return {
-            errors: computed(() => store.getters.errors)
+            alerts: computed(() => store.getters['alerts/alerts'])
         }
     }
 }

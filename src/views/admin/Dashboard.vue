@@ -13,7 +13,7 @@
       <img
         src="/tail-spin.svg"
         class="h-20 m-auto"
-        v-if="loading"
+        v-if="loading.readyOrders"
         alt=""
       />
       <p class="text-gray-500 text-2xl font-light">Orders ready for this week</p>
@@ -173,11 +173,11 @@ export default {
     const myChart = ref();
     const zoom = ref(2);
 
-    const getReadyOrders = () => store.dispatch("getReadyOrders");
+    const getReadyOrders = () => store.dispatch("companies/getReadyOrders");
 
     return {
-      loading: computed(() => store.state.),
-      user: computed(() => store.getters.user),
+      loading: computed(() => store.getters['companies/loading']),
+      user: computed(() => store.getters['auth/user']),
       currentPage,
       myChart,
       zoom,

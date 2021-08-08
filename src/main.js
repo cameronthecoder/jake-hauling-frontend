@@ -7,7 +7,7 @@ import './index.css'
 import vueDebounce from 'vue-debounce'
 import axios from 'axios'
 
-let baseURL = 'http://192.168.0.108:8008/'
+let baseURL = 'http://localhost:8008/'
 axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use((config) => {
     if (store.getters.isAuthenticated) {

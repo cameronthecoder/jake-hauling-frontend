@@ -5,11 +5,11 @@
 <script>
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { onBeforeUnmount, onMounted } from "@vue/runtime-core";
+import { onBeforeUnmount } from "@vue/runtime-core";
 export default {
   setup() {
     const store = useStore();
-    const loadUser = () => store.dispatch("loadUser");
+    const loadUser = () => store.dispatch("auth/loadUser");
 
     return {
       loadUser,

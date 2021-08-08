@@ -62,10 +62,10 @@ export default {
     return {
       username,
       password,
-      isAuthenticated: computed(() => store.getters.isAuthenticated),
-      loading: computed(() => store.state.auth.loading),
-      user: computed(() => store.getters.user),
-      login: () => store.dispatch('login', {'username': username.value, 'password': password.value}),
+      isAuthenticated: computed(() => store.getters['auth/isAuthenticated']),
+      loading: computed(() => store.getters['auth/loading']),
+      user: computed(() => store.getters['auth/user']),
+      login: () => store.dispatch('auth/login', {'username': username.value, 'password': password.value}),
     };
   },
 };
