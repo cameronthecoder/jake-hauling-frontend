@@ -4,111 +4,91 @@
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
     <div class="md:w-4/6">
+    <div class="flex justify-between">
+      <section>
       <h1 class="text-4xl font-body" v-if="user">
         Good afternoon, {{ user.first_name }}
       </h1>
-      <h2 class="text-lg mb-10 text-gray-400 font-medium mt-3 font-body">
+      <h2 class="text-lg mb-10 text-gray-400 font-medium border-none mt-3 font-body">
         July 22nd, 2021
       </h2>
+      </section>
+      <section>
+        <div class="relative">
+        <input type="text" placeholder="Search" name="search" class="font-body py-3 px-4 rounded-md bg-gray-200" id="">
+        </div>
+      </section>
+      </div>
       <img
         src="/tail-spin.svg"
         class="h-20 m-auto"
         v-if="loading.readyOrders"
         alt=""
       />
-      <p class="text-gray-500 font-body text-2xl font-light">Orders ready for this week</p>
-      <div class="flex flex-col mt-5 gap-4">
-         <article class="rounded shadow p-4 bg-white w-full">
-          <div class="flex items-center justify-between">
-            <div class="flex gap-4 items-center">
-              <div class="bg-primary-600 shadow text-white rounded p-2">
-                <TruckIcon class="h-8 w-8" />
-              </div>
-              <section>
-                  <p class="text-lg font-bold font-body text-gray-900"><LocationMarkerIcon class=" text-gray-400 inline-block w-6 h-6" /> New York, NY</p>
-                  <p class="text-base text-gray-500 font-medium antialiased font-body underlined">Quality Woods Furniture</p>
-              </section>
-            </div>
-            <section>
-              <p class="text-base text-gray-400 font-body font-normal">#343434</p>
-            </section>
-            <section class="flex items-center gap-4">
-              <button class="px-2 py-2 bg-gray-200 shadow flex items-center rounded-full text-gray-700"><EyeIcon class="w-6 h-6" /></button>
-              <button class="px-2 py-2 bg-green-500 shadow flex items-center rounded-full text-white"><CheckIcon class="w-6 h-6" /></button>
-            </section>
+      <p class="text-gray-500 mb-4 font-body text-2xl font-light">Analytics within past week</p>
+      <div class="flex flex-col md:flex-row gap-4 items-center">
+        <div class="bg-white w-full p-6 rounded-2xl shadow-md">
+          <div class="flex gap-4 items-center">
+          <div class="bg-primary-600 rounded-md flex px-4 py-4 items-center text-white">
+            <TruckIcon class="h-8 w-8" />
           </div>
-        </article>
-        <article class="rounded shadow p-4 bg-white w-full">
-          <div class="flex items-center justify-between">
-            <div class="flex gap-4 items-center">
-              <div class="bg-primary-600 shadow text-white rounded p-2">
-                <TruckIcon class="h-8 w-8" />
-              </div>
-              <section>
-                  <p class="text-lg font-bold font-body text-gray-900"><LocationMarkerIcon class=" text-gray-400 inline-block w-6 h-6" /> Duluth, MN</p>
-                  <p class="text-base font-medium antialiased font-body text-gray-500 underlined">Quality Woods Furniture</p>
-              </section>
-            </div>
-            <section>
-              <p class="text-base text-gray-400 font-body font-normal">#343434</p>
-            </section>
-            <section class="flex items-center gap-4">
-              <button class="px-2 py-2 bg-gray-200 shadow flex items-center rounded-full text-gray-700"><EyeIcon class="w-6 h-6" /></button>
-              <button class="px-2 py-2 bg-green-500 shadow flex items-center rounded-full text-white"><CheckIcon class="w-6 h-6" /></button>
-            </section>
+          <section>
+            <h1 class="text-4xl text-gray-400 font-body font-light">Orders</h1>
+            <h1 class="text-6xl font-body font-bold">23</h1>
+          </section>
           </div>
-        </article>
-        <article class="rounded shadow p-4 bg-white w-full">
-          <div class="flex items-center justify-between">
-            <div class="flex gap-4 items-center">
-              <div class="bg-primary-600 shadow text-white rounded p-2">
-                <TruckIcon class="h-8 w-8" />
-              </div>
-              <section>
-                  <p class="text-lg font-bold font-body"><LocationMarkerIcon class=" text-gray-400 inline-block w-6 h-6" /> Lanesboro, MN</p>
-                  <p class="text-base font-medium antialiased font-body underlined">Quality Woods Furniture</p>
-              </section>
-            </div>
-            <section>
-              <p class="text-base text-gray-400 font-body font-normal">#343434</p>
-            </section>
-            <section class="flex items-center gap-4">
-              <button class="px-2 py-2 bg-gray-200 shadow flex items-center rounded-full text-gray-700"><EyeIcon class="w-6 h-6" /></button>
-              <button class="px-2 py-2 bg-green-500 shadow flex items-center rounded-full text-white"><CheckIcon class="w-6 h-6" /></button>
-            </section>
+        </div>
+                <div class="bg-white w-full p-6 rounded-2xl shadow-md">
+          <div class="flex gap-4 items-center">
+          <div class="bg-primary-600 rounded-md flex px-4 py-4 items-center text-white">
+            <ClipboardListIcon class="h-8 w-8" />
           </div>
-        </article>
+          <section>
+            <h1 class="text-3xl text-gray-400 font-body font-light">Invoices</h1>
+            <h1 class="text-6xl font-body font-bold">23</h1>
+          </section>
+          </div>
+        </div>
+                <div class="bg-white w-full p-6 rounded-2xl shadow-md">
+          <div class="flex gap-4 items-center">
+          <div class="bg-primary-600 rounded-md flex px-4 py-4 items-center text-white">
+            <TruckIcon class="h-8 w-8" />
+          </div>
+          <section>
+            <h1 class="text-4xl text-gray-400 font-body font-light">Orders</h1>
+            <h1 class="text-6xl font-body font-bold">23</h1>
+          </section>
+          </div>
+        </div>
       </div>
-      <div class="p-6 rounded shadow-lg">
-                      <l-map
-          :center="[47.41322, -1.219482]"
-          v-model="zoom"
-          v-model:zoom="zoom"
-          style="height:50vh"
-          class="rounded-md"
-        >
-            <l-tile-layer
-              url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2FtZXJvbmNvZGVzIiwiYSI6ImNrbGR2YXBpbjAxNXQycHBrZmJ0bXR6YjEifQ.OmuqPuHveyAqDwbPgfTM4Q"
-              attribution="Copyright (c) 2021 Mapbox"
-              :tileSize="512"
-              :zoomOffset="-1"
-              :maxZoom="18"
-              accessToken="pk.eyJ1IjoiY2FtZXJvbmNvZGVzIiwiYSI6ImNrbGR2YXBpbjAxNXQycHBrZmJ0bXR6YjEifQ.OmuqPuHveyAqDwbPgfTM4Q"
-            ></l-tile-layer>
-
-                  <l-marker :lat-lng="[47.41322, -1.219482]">
-                </l-marker>
-        </l-map>
+      <p class="text-gray-500 mb-5 font-body text-2xl mt-10 font-light">Orders ready soon</p>
+      <div class="flex flex-col gap-4">
+         <article class="rounded-lg shadow p-8 bg-white w-full" v-for="order in orders" :key="order.po_number">
+          <div class="flex items-center justify-between">
+            <div class="flex gap-4 items-center">
+              <div class="bg-black shadow text-white rounded-2xl p-2">
+                <TruckIcon class="h-8 w-8" />
+              </div>
+              <section>
+                  <p class="text-lg font-bold font-body text-gray-900"><LocationMarkerIcon class=" text-gray-400 inline-block w-6 h-6" /> {{order.location}}</p>
+                  <p class="text-base text-gray-500 font-medium antialiased font-body underlined">{{order.company}}</p>
+              </section>
+            </div>
+            <section>
+              <p class="text-base text-gray-400 font-body font-normal">#{{order.po_number}}</p>
+            </section>
+            <section class="flex items-center gap-4">
+              <button class="px-2 py-2 bg-primary-600 shadow flex items-center rounded-full text-white"><EyeIcon class="w-6 h-6" /></button>
+            </section>
+          </div>
+        </article>
       </div>
     </div>
 
     <div class="flex-1">
-      <div class="p-3 rounded shadow-lg">
-        <h1 class="text-lg font-bold font-body">Top Accounts</h1>
-      </div>
-
-      <div class="p-3 rounded shadow-lg">
-        <h1 class="text-lg font-bold font-body">Order Statistics</h1>
+      <p class="text-gray-500 mb-4 font-body text-2xl font-light">Orders within next month</p>
+      <div class="bg-white h-64 rounded-2xl shadow w-full">
+        
       </div>
     </div>
   </div>
@@ -121,18 +101,6 @@ import DataCard from "../../components/DataCard.vue";
 import ReadyOrders from "../../components/ReadyOrders.vue";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import {
-  LMap,
-  LIcon,
-  LTileLayer,
-  LMarker,
-  LControlLayers,
-  LTooltip,
-  LPopup,
-  LPolyline,
-  LPolygon,
-  LRectangle,
-} from "@vue-leaflet/vue-leaflet";
 import {
   ClockIcon,
   CheckIcon,
@@ -155,16 +123,6 @@ export default {
     ClockIcon,
     ClipboardListIcon,
     TruckIcon,
-     LMap,
-    LIcon,
-    LTileLayer,
-    LMarker,
-    LControlLayers,
-    LTooltip,
-    LPopup,
-    LPolyline,
-    LPolygon,
-    LRectangle,
   },
 
   setup() {
@@ -172,6 +130,23 @@ export default {
     const currentPage = ref(1);
     const myChart = ref();
     const zoom = ref(2);
+    const orders = ref([
+      {
+        "company": "Quality Woods Furniture",
+        "location": "Rochester, MN",
+        "po_number": "32432324",
+      },
+      {
+        "company": "Cabinfield Woodworking",
+        "location": "Lancaster, PA",
+        "po_number": "892342455"
+      },
+      {
+        "company": "Harmony Cedar",
+        "location": "Minneapolis, MN",
+        "po_number": "567456432"
+      },
+    ])
 
     const getReadyOrders = () => store.dispatch("companies/getReadyOrders");
 
@@ -182,6 +157,7 @@ export default {
       myChart,
       zoom,
       getReadyOrders,
+      orders
     };
   },
   created() {

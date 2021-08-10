@@ -4,6 +4,7 @@ import Dashboard from "../views/admin/Dashboard.vue";
 import Companies from "../views/admin/Companies.vue";
 import CreateOrder from "../views/admin/CreateOrder.vue";
 import UIExplorer from "../views/admin/UIExplorer.vue";
+import Authenticate from "../views/admin/Authenticate.vue";
 import Login from "../views/Login.vue";
 import store from '../store'
 
@@ -50,6 +51,14 @@ const routes = [{
                     title: "Create Order"
                 },
                 component: CreateOrder
+            },
+            {
+                path: 'authenticate',
+                name: 'admin_authenticate',
+                meta: {
+                    title: "Authenticate with Intuit"
+                },
+                component: Authenticate,
             },
         ]
     },

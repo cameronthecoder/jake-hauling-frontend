@@ -82,7 +82,6 @@ const actions = {
             commit('SET_TOKEN', null);
             VueCookieNext.removeCookie('access_token', null);
             router.push({ 'name': 'Login' });
-            commit('alerts/ADD_ALERT', {'message': 'Successfully logged out'}, {root: true})
         }
     },
 };

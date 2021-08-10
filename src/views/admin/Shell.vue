@@ -4,16 +4,15 @@
     <div
       class="
         flex-1
-        md:rounded-l-3xl
-        bg-gray-50
+        bg-gray-100
         overflow-auto
-        p-8
-        md:p-10
         font-bold
       "
     >
+    <div class="p-8 mt-5 md:p-10">
       <alerts />
       <router-view />
+    </div>
     </div>
   </div>
 </template>

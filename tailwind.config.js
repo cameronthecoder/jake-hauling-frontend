@@ -5,8 +5,8 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         fontFamily: {
-            'display': ['Open Sans'],
-            'body': ['Open Sans']
+            'display': ['Rubik'],
+            'body': ['Rubik']
         },
         extend: {
             colors: {
@@ -20,7 +20,4 @@ module.exports = {
         },
         plugins: [],
     },
-    plugins: [
-        require('@tailwindcss/forms'),
-    ]
 }
