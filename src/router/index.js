@@ -8,7 +8,7 @@ import Login from "../views/Login.vue";
 import store from '../store'
 
 const isAuthenticated = () => {
-    return store.getters.isAuthenticated;
+    return store.getters['auth/isAuthenticated'];
 }
 
 

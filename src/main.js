@@ -7,11 +7,14 @@ import './index.css'
 import vueDebounce from 'vue-debounce'
 import axios from 'axios'
 
-let baseURL = 'http://localhost:8008/'
+let baseURL = 'http://192.168.0.108:8008/'
 axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use((config) => {
-    if (store.getters.isAuthenticated) {
-        config.headers.Authorization = `Bearer ${store.getters.token}`;
+    if (store.getters['auth/isAuthenticated']) {
+        console.log('test');
+        config.headers.Authorization = `Bearer ${store.getters['auth/token']}`;
+    } else {
+        console.log('not authed');
     }
     return config;
 })

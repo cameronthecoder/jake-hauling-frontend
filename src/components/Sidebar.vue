@@ -35,8 +35,8 @@ export default {
     setup() {
         const store = useStore();
         return {
-            user: computed(() => store.getters.user),
-            logout: () => store.dispatch('logout')
+            user: computed(() => store.getters['auth/user']),
+            logout: () => store.dispatch('auth/logout')
         }
     }
 }

@@ -16,7 +16,7 @@
         v-if="loading.readyOrders"
         alt=""
       />
-      <p class="text-gray-500 text-2xl font-light">Orders ready for this week</p>
+      <p class="text-gray-500 font-body text-2xl font-light">Orders ready for this week</p>
       <div class="flex flex-col mt-5 gap-4">
          <article class="rounded shadow p-4 bg-white w-full">
           <div class="flex items-center justify-between">

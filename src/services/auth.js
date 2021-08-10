@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthenticationService {
     async authenticate(user) {
         try {
-            const { data } = await axios.post('/api/auth/token/', `grant_type=password&username=${user.username}&password=${user.password}`, {
+            const { data } = await axios.post('/api/auth/token', `grant_type=password&username=${user.username}&password=${user.password}`, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
@@ -29,7 +29,6 @@ class AuthenticationService {
             const { data } = await axios.get('/api/auth/me');
             return [data, null];
         } catch (error) {
-            console.log(error);
             return [null, error];
         }
     }
